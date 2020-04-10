@@ -1,0 +1,7 @@
+### Global ignores
+**/.project
+**/.idea
+**/.gradle
+
+*.jar
+build/libs/guessme-1.0-SNAPSHOT.jar
