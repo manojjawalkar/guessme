@@ -5,12 +5,10 @@ import java.util.Scanner;
 
 public class Player {
     private String name;
-    private int age;
     private int myGuess;
 
-    Player(String x, int y){
+    Player(String x){
         name = x;
-        age = y;
     }
     Player(){
 
@@ -23,13 +21,10 @@ public class Player {
         this.name = name;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public  int myGuess(){
+    public  int makeGuess(){
         Scanner sc = new Scanner(System.in);
         try{
+            System.out.print(this.getName()+" make a guess ");
             myGuess = sc.nextInt();
 
         } catch(InputMismatchException ime){

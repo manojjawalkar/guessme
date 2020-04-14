@@ -1,24 +1,33 @@
 package com.quarantine.guess;
 
 
+import java.util.Scanner;
+
 public class GuessGame {
-    private Player p1;
-    private Player p2;
-    private Player p3;
+    private Player player[];
     int guessME;
     int flag = 1;
     String winner;
 
     public void startGame(){
-        System.out.println("Game started!");
-        setUpPlayers();
+        int numOfPlayers =1;
+        System.out.println("Enter the number of players ");
+        try{
+            Scanner sc = new Scanner(System.in);
+            numOfPlayers = sc.nextInt();
+        } catch (Exception e){
+            System.out.println("oops! that's not a number");
+            System.exit(0);
+        }
+
+        setUpPlayers(numOfPlayers);
         System.out.println("Players are ready to play");
+        System.out.println("Game started!");
         while(true){
             guessME = (int) (Math.random() *10);
-            checkGuess(p1);
-            checkGuess(p2);
-            checkGuess(p3);
-            System.out.println("-----------------------------------");
+            System.out.println("----------------\n" +
+                    "Computer making a guess\n\tcomputer guessed = "+guessME);
+            checkGuess();
             if(flag == 0) {
                 System.out.println("The winner is "+winner + "\nCorrect guess was ="+guessME);
                 System.exit(0);
@@ -27,17 +36,22 @@ public class GuessGame {
     }
 
 
-    public void setUpPlayers() {
-        System.out.println("Setting up players");
-        p1 = new Player("Shrikant", 13);
-        p2 = new Player("Prachi", 13);
-        p3 = new Player("Manoj", 13);
+    public void setUpPlayers(int numOfPlayers) {
+        player = new Player[numOfPlayers];
+        for (int i = 0; i < player.length; i++) {
+            System.out.print("Enter the name of player: ");
+            Scanner sc = new Scanner(System.in);
+            String name = sc.next();
+            player[i] = new Player(name);
+        }
     }
-    public void checkGuess(Player p){
-        System.out.println(p.getName()+" Making a guess = ");
-        if(p.myGuess() == guessME){
-            flag = 0;
-            winner = p.getName();
+    public void checkGuess(){
+        for (int i = 0; i < player.length; i++) {
+//            System.out.print(player[i].getName()+ " make a guess ");
+            if(player[i].makeGuess() == guessME){
+                winner = player[i].getName();
+                flag = 0;
+            }
         }
     }
 }
