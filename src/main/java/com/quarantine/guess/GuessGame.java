@@ -14,7 +14,7 @@ public class GuessGame {
         setUpPlayers();
         System.out.println("Players are ready to play");
         while(true){
-            guessME = (int) Math.random() *10;
+            guessME = (int) (Math.random() *10);
             checkGuess(p1);
             checkGuess(p2);
             checkGuess(p3);
