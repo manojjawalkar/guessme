@@ -28,12 +28,13 @@ public class Player {
     }
 
     public  int myGuess(){
-        Scanner sc = new Scanner(System.in);
+
         try{
+        Scanner sc = new Scanner(System.in);
             myGuess = sc.nextInt();
 
         } catch(InputMismatchException ime){
-            System.out.println("The input was not a number");
+            System.out.println("The input is not a number");
         }
         return myGuess;
     }
