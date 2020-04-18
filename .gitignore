@@ -3,5 +3,7 @@
 **/.idea
 **/.gradle
 ./build/classes/java/main/com/quarantine/guess/*.class
+build/
+.debug/
 *.jar
 ./build/libs/guessme-1.0-SNAPSHOT.jar
