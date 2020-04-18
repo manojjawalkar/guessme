@@ -1,7 +1,8 @@
 package com.quarantine.guess;
 
-
 import java.util.Scanner;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 public class GuessGame {
     private Player player[];
@@ -9,9 +10,12 @@ public class GuessGame {
     int flag = 1;
     String winner;
 
+    final static Log logger = LogFactory.getLog(GuessGame.class);
+
     public void startGame(){
         int numOfPlayers =1;
-        System.out.println("Enter the number of players ");
+//        System.out.println("Enter the number of players ");
+        logger.debug("game start");
         try{
             Scanner sc = new Scanner(System.in);
             numOfPlayers = sc.nextInt();
@@ -27,6 +31,9 @@ public class GuessGame {
             guessME = (int) (Math.random() *10);
             System.out.println("----------------\n" +
                     "Computer making a guess\n\tcomputer guessed = "+guessME);
+            if(logger.isDebugEnabled()){
+                logger.debug("Computer guessed = "+guessME);
+            }
             checkGuess();
             if(flag == 0) {
                 System.out.println("The winner is "+winner + "\nCorrect guess was ="+guessME);
